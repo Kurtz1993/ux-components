@@ -1,2 +1,5 @@
-require('./test.scss');
-!function () { console.log("Hello, world!") } ();
+import card from './card/card';
+
+angular.module('ux.components', [
+    card.name
+]);

@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="header">
+        <span class="pull-left">
+            <h4 class="card-title" ng-bind="$ctrl.title"></h4>
+        </span>
+        <span class="pull-right" ng-if="$ctrl.canFlip">
+            <i class="fa">X</i>
+        </span>
+    </div>
+
+    <div class="card-content">
+        <div class="front" ng-transclude="front"></div>
+        <div class="back" ng-transclude="back">Sad fallback</div>
+        <div class="footer" ng-transclude="footer">Super sad fallback</div>
+    </div>
+</div>

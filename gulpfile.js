@@ -3,7 +3,7 @@ var webpackConf = require('./webpack.config.js');
 var webpackStream = require('webpack-stream');
 
 var paths = {
-    less: 'src/**/*.less',
+    sass: 'src/**/*.scss',
     ts: 'src/**/*.ts',
     html: 'src/**/*.html'
 };
@@ -21,5 +21,5 @@ gulp.task('build-dist', function () {
 });
 // Watches for changes in application's SASS files.
 gulp.task('watch', ['build'], function () {
-    gulp.watch([paths.less, paths.ts, paths.html], ['build']);
+    gulp.watch([paths.sass, paths.ts, paths.html], ['build']);
 });

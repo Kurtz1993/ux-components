@@ -1,0 +1,7 @@
+.hello {
+    font-size: 2px;
+
+    &>p{
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "ux-components",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Kurtz1993/ux-components.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^0.25.0",
+    "gulp": "^3.9.1",
+    "html-loader": "^0.4.4",
+    "node-sass": "^3.10.0",
+    "sass-loader": "^4.0.2",
+    "source-map": "^0.5.6",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.2",
+    "webpack-stream": "^3.2.0"
+  },
+  "readmeFile": "readme.md"
+}

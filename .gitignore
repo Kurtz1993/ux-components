@@ -38,3 +38,6 @@ jspm_packages
 
 # typings files
 typings
+
+# Dist files
+www/dist

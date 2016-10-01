@@ -1,7 +1,9 @@
 module.exports = {
-    entry: './src/components.ts',
+    context: process.cwd() +'/src',
+    entry: './components.ts',
     devtool: 'source-map',
     output: {
+        path: './www/dist',
         filename: 'ux-components.js'
     },
     resolve: {

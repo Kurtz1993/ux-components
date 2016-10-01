@@ -1,16 +1,18 @@
-<div class="card">
-    <div class="header">
-        <span class="pull-left">
+<div class="card-container he{{$ctrl.height}}">
+    <div class="card" ng-class="{'has-footer': $ctrl.hasFooter, 'hover': $ctrl.isFlipped}">
+        <div class="header">
+            <span class="pull-left">
             <h4 class="card-title" ng-bind="$ctrl.title"></h4>
         </span>
-        <span class="pull-right" ng-if="$ctrl.canFlip">
-            <i class="fa">X</i>
+            <span class="pull-right" ng-if="$ctrl.canFlip" ng-click="$ctrl.toggleFlip()" aria-label="Card settings">
+            <i class="fa fa-cog card-settings" aria-hidden="true"></i>
         </span>
-    </div>
+        </div>
 
-    <div class="card-content">
-        <div class="card-front" ng-transclude="front"></div>
-        <div class="card-back" ng-transclude="back">Sad fallback</div>
-        <div class="card-footer" ng-transclude="footer">Super sad fallback</div>
+        <div class="card-content">
+            <div class="card-front" ng-transclude="front"></div>
+            <div class="card-back" ng-if="$ctrl.canFlip"></div>
+            <div class="card-footer" ng-transclude="footer" ng-if="$ctrl.hasFooter"></div>
+        </div>
     </div>
 </div>

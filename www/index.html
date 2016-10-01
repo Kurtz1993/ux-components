@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Testing components</title>
+    <link rel="stylesheet" href="./css/test.css">
 </head>
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="./dist/ux-components.js"></script>
 
     <div ng-app="ux.components">
-        <card>
+        <card card-title="I'm a card!!!" card-height="3" has-footer="true" can-flip="true">
             <card-front>
                 <p>Hello!</p>
-            </card-front>>
+            </card-front>
+            <card-footer>
+                I'm a footer!!!
+            </card-footer>
         </card>
     </div>
 </body>

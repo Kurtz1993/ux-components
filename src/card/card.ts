@@ -13,6 +13,12 @@ let directiveDefinition = (): ng.IDirective => {
             'front': 'cardFront',
             'back': '?cardBack',
             'footer': '?cardFooter'
+        },
+        scope: {
+            title: '@cardTitle',
+            height: '@cardHeight',
+            hasFooter: '@?',
+            canFlip: '@?'
         }
     }
 };

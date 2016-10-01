@@ -40,4 +40,6 @@ jspm_packages
 typings
 
 # Dist files
-www/dist
+www/dist/
+www/css/
+www/fonts/

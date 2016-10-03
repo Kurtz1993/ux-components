@@ -3,7 +3,7 @@ $he2: $he1 * 2;
 $he3: $he1 * 3;
 $he4: $he1 * 4;
 
-.bofi-card {
+.base-card {
   margin-bottom: 20px;
   margin-top: 10px;
   height: inherit;
@@ -60,6 +60,7 @@ $he4: $he1 * 4;
         >.card-front {
           display: block;
           height: 100%;
+          overflow-y: auto;
         }
 
         p {
@@ -87,7 +88,7 @@ $he4: $he1 * 4;
 }
 
 // Flip card.
-.bofi-card {
+.base-card {
   .card-container {
     position: relative;
     -webkit-transition: 0.6s;
@@ -122,6 +123,12 @@ $he4: $he1 * 4;
       -webkit-transform: rotateY(-180deg);
       -ms-transform: rotateY(-180deg);
       transform: rotateY(-180deg);
+
+      >.card-back {
+        height: calc(97.5% - 40px);
+        padding: 10px 20px;
+        overflow-y: auto;
+      }
     }
   }
 

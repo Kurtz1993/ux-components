@@ -27,6 +27,6 @@
   "readmeFile": "readme.md",
   "scripts": {
     "start": "http-server ./www",
-    "build": "webpack --colors --progress"
+    "build": "webpack --progress"
   }
 }

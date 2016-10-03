@@ -1,6 +1,5 @@
 module.exports = {
-    context: process.cwd() +'/src',
-    entry: './components.ts',
+    entry: './src/components.ts',
     devtool: 'source-map',
     output: {
         path: './www/dist',

@@ -1,5 +1,5 @@
 import './card.scss';
-import CardController from './card-controller';
+import {CardController} from './card-controller';
 let template = require('./card.html');
 
 let directiveDefinition = (): ng.IDirective => {
@@ -18,7 +18,8 @@ let directiveDefinition = (): ng.IDirective => {
             title: '@cardTitle',
             height: '@cardHeight',
             hasFooter: '@?',
-            canFlip: '@?'
+            canFlip: '@?',
+            onSaveSettings: '&?'
         }
     }
 };
@@ -26,4 +27,4 @@ let directiveDefinition = (): ng.IDirective => {
 let card = angular.module('ux.components.card', [])
     .directive('card', directiveDefinition);
 
-export default card;
+export {card};

@@ -11,10 +11,13 @@
             </div>
 
             <div class="card-content">
-                <div class="card-front" ng-transclude="front"></div>
+                <div class="card-front" ng-transclude="front" ng-hide="$ctrl.isLoading"></div>
+                <div class="card-status" ng-if="$ctrl.isLoading">
+                    Loading...
+                </div>
             </div>
 
-            <div class="card-footer" ng-transclude="footer" ng-if="$ctrl.hasFooter"></div>
+            <div class="card-footer" ng-transclude="footer" ng-if="$ctrl.hasFooter" ng-hide="$ctrl.isLoading"></div>
         </div>
 
         <div class="card-settings" ng-if="$ctrl.canFlip">
@@ -27,7 +30,7 @@
                 </span>
             </div>
 
-            <div class="card-back" ng-transclude="back"></div>
+            <div class="card-back" ng-transclude="back" ng-hide="$ctrl.isLoading"></div>
         </div>
     </div>
 </div>

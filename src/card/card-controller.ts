@@ -3,6 +3,7 @@ export class CardController {
     public height: string;
     public hasFooter: boolean;
     public canFlip: boolean;
+    public isLoading: boolean;
     public isFlipped: boolean = false;
     public onSaveSettings: Function;
 

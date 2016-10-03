@@ -19,7 +19,8 @@ let directiveDefinition = (): ng.IDirective => {
             height: '@cardHeight',
             hasFooter: '@?',
             canFlip: '@?',
-            onSaveSettings: '&?'
+            onSaveSettings: '&?',
+            isLoading: '='
         }
     }
 };

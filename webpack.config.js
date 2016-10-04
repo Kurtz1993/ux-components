@@ -18,14 +18,6 @@ module.exports = {
             {
                 test: /\.html$/, // Only .html files
                 loader: 'html' // Run html loader
-            },
-            {
-                test: /\.scss$/, // Only .scss files
-                loader: 'style!css!sass' // Run css and style loader
-            },
-            {
-                test: /\.css$/, // Only .css files
-                loader: 'style!css' // Run css and style loader
             }
         ]
     }

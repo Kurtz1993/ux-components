@@ -1,4 +1,3 @@
-import './card.scss';
 import {CardController} from './card-controller';
 let template = require('./card.html');
 

@@ -15,7 +15,7 @@ gulp.task('build', ['sass'], function (done) {
 });
 
 gulp.task('sass', ['copy-fonts'], function () {
-    return gulp.src('./src/test.scss')
+    return gulp.src('./src/components.scss')
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(gulp.dest('./www/css'));
 });
@@ -32,5 +32,6 @@ gulp.task('build-dist', function () {
 });
 // Watches for changes in application's SASS files.
 gulp.task('watch', ['build'], function () {
-    gulp.watch([paths.sass, paths.ts, paths.html], ['build']);
+    gulp.watch([paths.ts, paths.html], ['build']);
+    gulp.watch(paths.sass, ['sass']);
 });

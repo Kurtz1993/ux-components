@@ -1,7 +1,19 @@
+$he-space: 20px;
 $he1: 150px;
-$he2: $he1 * 2;
-$he3: $he1 * 3;
-$he4: $he1 * 4;
+$he2: ($he1 * 2) + $he-space;
+$he3: ($he1 * 3) + $he-space;
+$he4: ($he1 * 4) + $he-space;
+$spinner-color: #5A7CAA;
+
+@mixin bottom-circled {
+    @include prefix(border-radius, 0px 0px 5px 5px);
+}
+
+@mixin prefix($name, $value) {
+  @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+    #{$vendor}#{$name}: #{$value};
+  }
+}
 
 .base-card {
     margin-bottom: 20px;
@@ -21,11 +33,11 @@ $he4: $he1 * 4;
         .card,
         .card-settings {
             height: inherit;
-            background-color: white;
+            background-color: #FFF;
             -webkit-border-radius: 5px;
                     border-radius: 5px;
-            -webkit-box-shadow: 0px 1px 5px rgba(20,20,20,0.4);
-                    box-shadow: 0px 1px 5px rgba(20,20,20,0.4);
+            -webkit-box-shadow: 0px 1px 5px rgba(20, 20, 20, 0.4);
+                    box-shadow: 0px 1px 5px rgba(20, 20, 20, 0.4);
             color: #555;
             text-align: left;
             font-size: 13px;
@@ -47,30 +59,56 @@ $he4: $he1 * 4;
 
                 .card-settings-button {
                     cursor: pointer;
+                    opacity: 0;
+                    @include prefix(transition, opacity 0.3s);
+                }
+
+                .card-save-button {
+                    cursor: pointer;
+                }
+
+                &:hover {
+                    .card-settings-button {
+                        opacity: 1;
+                    }
                 }
             }
         }
 
         .card {
+            position: relative;
 
             > .card-content {
                 height: calc(97.5% - 40px);
-                padding: 10px 20px;
+                padding: 5px 20px 0px 20px;
 
                 > .card-front {
                     display: block;
                     height: 100%;
                     overflow-y: auto;
+                    overflow-x: hidden;
                 }
 
                 > .card-status {
                     position: absolute;
-                    background: transparent;
+                    background: white;
                     width: 100%;
                     text-align: center;
                     z-index: 5;
-                    top: 50%;
+                    top: 40%;
                     left: 0;
+                    font-size: 17px;
+                }
+
+                >.card-backdrop {
+                    position: absolute;
+                    left: 0;
+                    top: 56px;
+                    width: 100%;
+                    height: calc(97.5% - 40px);
+                    background-color: white;
+                    z-index: 3;
+                    @include bottom-circled;
                 }
 
                 p {
@@ -79,15 +117,14 @@ $he4: $he1 * 4;
             }
 
             > .card-footer {
-                -webkit-border-radius: 0px 0px 5px 5px;
-                        border-radius: 0px 0px 5px 5px;
+                @include bottom-circled;
+                border-top: 1px solid #DDD;
                 display: none;
             }
 
             &.has-footer {
                 > .card-content {
                     height: calc(80.5% - 40px);
-                    border-bottom: 1px solid #DDD;
                 }
 
                 > .card-footer {
@@ -110,15 +147,14 @@ $he4: $he1 * 4;
             transform-style: preserve-3d;
 
         .card, .card-settings {
-            position: absolute;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             -webkit-backface-visibility: hidden;
                     backface-visibility: hidden;
-            -webkit-transition: 0.6s;
-                    transition: 0.6s;
+            -webkit-transition: all 0.6s;
+                    transition: all 0.6s;
             -webkit-transform-style: preserve-3d;
             -ms-transform-style: preserve-3d;
                 transform-style: preserve-3d;
@@ -132,9 +168,10 @@ $he4: $he1 * 4;
         }
 
         .card-settings {
-            -webkit-transform: rotateY(-180deg);
-            -ms-transform: rotateY(-180deg);
-                transform: rotateY(-180deg);
+            -webkit-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+                transform: rotateY(180deg);
+            position: absolute;
 
             > .card-back {
                 height: calc(97.5% - 40px);
@@ -145,15 +182,20 @@ $he4: $he1 * 4;
     }
 
     &.flipped .card {
-        -webkit-transform: rotateY(180deg);
-        -ms-transform: rotateY(180deg);
-            transform: rotateY(180deg);
+        -webkit-transform: rotateY(-180deg);
+        -ms-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+        position: absolute !important;
+        opacity: 0;
     }
 
     &.flipped .card-settings {
         -webkit-transform: rotateY(0deg);
         -ms-transform: rotateY(0deg);
             transform: rotateY(0deg);
+        -webkit-backface-visibility: visible;
+                backface-visibility: visible;
+        position: relative !important;
     }
 }
 
@@ -166,6 +208,7 @@ $he4: $he1 * 4;
     float: right;
 }
 
+// Card heights
 .he1 {
     height: $he1;
 }
@@ -180,4 +223,47 @@ $he4: $he1 * 4;
 
 .he4 {
     height: $he4;
+}
+
+// Spinner
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: calc(50% - 20px);
+    margin-bottom: 15px;
+}
+
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $spinner-color;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: sk-bounce 1.6s infinite ease-in-out;
+            animation: sk-bounce 1.6s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        -webkit-transform: scale(0.0);
+                transform: scale(0.0);
+    } 50% {
+        -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+    }
 }

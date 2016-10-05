@@ -6,11 +6,3 @@
     font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
-
-.hello {
-    font-size: 2px;
-
-    & > p {
-        font-weight: bold;
-    }
-}

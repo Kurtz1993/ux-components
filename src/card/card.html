@@ -11,8 +11,13 @@
             </div>
 
             <div class="card-content">
-                <div class="card-front" ng-transclude="front" ng-hide="$ctrl.isLoading"></div>
+                <div class="card-front" ng-transclude="front"></div>
+                <div class="card-backdrop" ng-if="$ctrl.isLoading"></div>
                 <div class="card-status" ng-if="$ctrl.isLoading">
+                    <div class="spinner">
+                        <div class="double-bounce1"></div>
+                        <div class="double-bounce2"></div>
+                    </div>
                     Loading...
                 </div>
             </div>
@@ -25,7 +30,7 @@
                 <span class="pull-left">
                     <h4 class="card-title" ng-bind="$ctrl.title"></h4>
                 </span>
-                <span class="pull-right card-settings-button" ng-click="$ctrl.saveSettings()" aria-label="Save card settings">
+                <span class="pull-right card-save-button text-navy" ng-click="$ctrl.saveSettings()" aria-label="Save card settings">
                     Save
                 </span>
             </div>

@@ -6,7 +6,9 @@
     "removeComments": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "listFiles": true
+    "listFiles": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "compileOnSave": false
 }
